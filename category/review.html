@@ -4,6 +4,7 @@
         <meta charset="utf-8" />
         <title>Reise Blog - Review</title>
         <link rel="stylesheet" href="/theme/css/main.css" />
+        <link rel="stylesheet" href="/theme/magnific-popup.css">
 </head>
 
 <body id="index" class="home">
@@ -57,5 +58,29 @@
                 <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
         </footer><!-- /#contentinfo -->
 
+<!-- jQuery 1.7.2+ or Zepto.js 1.0+ -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<!-- Magnific Popup core JS file -->
+<script src="/theme/magnific-popup.js"></script>
+<script>
+$('.gallery').magnificPopup({
+        delegate: 'a',
+        type: 'image',
+        gallery: {
+                enabled: true,
+                navigateByImgClick: true,
+                preload: [1,2]
+        },
+        image: {
+                titleSrc: function(item) {
+                        if (item.el.attr('caption') && item.el.attr('exif')) {
+                                return (item.el.attr('caption').replace(/\\n/g, '<br />') +
+                                        '<small>' + item.el.attr('title') + ' - ' + item.el.attr('exif') + '</small>');
+                        }
+                return item.el.attr('title') + '<small>' + item.el.attr('exif') + '</small>';
+        } }
+});
+</script>
 </body>
 </html>
